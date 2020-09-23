@@ -22,12 +22,12 @@ export class RegisterComponent implements OnInit {
         private accountService: AccountService,
         private alertService: AlertService
     ) { }
-
+//Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$')]
     ngOnInit(): void {
         this.form = this.formBuilder.group({
             firstName: ['', Validators.required],
             lastName: ['', Validators.required],
-            username: ['', Validators.required],
+            email: ['', [Validators.required, Validators.email]],
             password: ['', [Validators.required, Validators.minLength(6)]]
         });
     }
@@ -35,7 +35,7 @@ export class RegisterComponent implements OnInit {
     // // convenience getter for easy access to form fields
     get f() { return this.form.controls; }
 
-    onSubmit() {
+    onSubmit(): void {
         this.submitted = true;
 
         // reset alerts on submit
