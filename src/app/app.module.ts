@@ -4,50 +4,48 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 
-import {TrafficApiService} from './api/services/traffic-api.service';
+import { TrafficApiService } from './api/services/traffic-api.service';
 import { TrafficLightsComponent } from './traffic-lights/traffic-lights.component';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatGridListModule} from '@angular/material/grid-list';
+import { MatGridListModule } from '@angular/material/grid-list';
 
-import {SignalRService} from './api/services/signal-r.service';
+import { SignalRService } from './api/services/signal-r.service';
 import { Routes, RouterModule } from '@angular/router';
-import { LoginComponent } from './login/login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NavigationPanelComponent } from './navigation-panel/navigation-panel.component';
 import { LayoutModule } from '@angular/cdk/layout';
-import {MaterialModule} from './material/material.module';
-import { RegistrationComponent } from './registration/registration.component';
+import { MaterialModule } from './material/material.module';
 import { AboutComponent } from './about/about.component';
-
+import { LoginComponent } from './account/login.component';
+import { RegisterComponent } from './account/register.component';
+import { AccountModule } from './account/account.module';
 
 
 const appRoutes: Routes = [
-  { path: 'trafficlight/:id', component: TrafficLightsComponent},
+  { path: 'trafficlight/:id', component: TrafficLightsComponent },
 
-  { path: 'login', component: LoginComponent},
-  { path: 'registration', component: RegistrationComponent},
-  { path: 'about', component: AboutComponent},
-  
+  { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent },
+  { path: 'about', component: AboutComponent },
+
 ];
-  // {
-  //   path: '',
-  //   component: AppComponent,
-  //   children: [
-  //     { path: 'trafficlight/:id', component: TrafficLightsComponent},
-  //   ]
-  // }
-  // { path: '', component: TrafficLightsComponent},
-  // { path: '**', component: TrafficLightsComponent }
+// {
+//   path: '',
+//   component: AppComponent,
+//   children: [
+//     { path: 'trafficlight/:id', component: TrafficLightsComponent},
+//   ]
+// }
+// { path: '', component: TrafficLightsComponent},
+// { path: '**', component: TrafficLightsComponent }
 
 
 @NgModule({
   declarations: [
     AppComponent,
     TrafficLightsComponent,
-    LoginComponent,
     NavigationPanelComponent,
-    RegistrationComponent,
     AboutComponent,
   ],
 
@@ -60,7 +58,8 @@ const appRoutes: Routes = [
     ReactiveFormsModule,
     RouterModule.forRoot(appRoutes),
     LayoutModule,
-    MaterialModule
+    MaterialModule,
+    AccountModule
   ],
   providers: [TrafficApiService, SignalRService],
   bootstrap: [AppComponent]
