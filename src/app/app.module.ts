@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { TrafficApiService } from './api/services/traffic-api.service';
 import { TrafficLightsComponent } from './traffic-lights/traffic-lights.component';
@@ -20,7 +20,7 @@ import { AboutComponent } from './about/about.component';
 import { LoginComponent } from './account/login.component';
 import { RegisterComponent } from './account/register.component';
 import { AccountModule } from './account/account.module';
-
+import { InterseptorJwt } from './core/interseptor-jwt/interseptor-jwt';
 
 const appRoutes: Routes = [
   { path: 'trafficlight/:id', component: TrafficLightsComponent },
@@ -61,7 +61,15 @@ const appRoutes: Routes = [
     MaterialModule,
     AccountModule
   ],
-  providers: [TrafficApiService, SignalRService],
+  providers: [
+    TrafficApiService,
+    SignalRService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: InterseptorJwt,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

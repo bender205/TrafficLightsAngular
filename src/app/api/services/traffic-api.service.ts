@@ -11,6 +11,13 @@ export class TrafficApiService {
   { }
 
   getById(id: number = 1): Observable<TrafficLight> {
+    console.log('get by id()');
     return this.http.get<TrafficLight>(`/api/TrafficLight/${id}`);
   }
+
+  /*
+    http.get('someurl',{
+   headers: {'header1':'value1','header2':'value2'}
+});
+  */
 }

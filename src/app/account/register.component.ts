@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
 
 import { AlertService } from '../services/alert.service';
 import { AccountService } from '../api/services/account.service';
+import { Observable } from 'rxjs';
 
 
 // @Component({ templateUrl:'register.component.html' })
@@ -22,17 +23,17 @@ export class RegisterComponent implements OnInit {
         private accountService: AccountService,
         private alertService: AlertService
     ) { }
-//Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$')]
+
     ngOnInit(): void {
         this.form = this.formBuilder.group({
             firstName: ['', Validators.required],
             lastName: ['', Validators.required],
-            email: ['', [Validators.required, Validators.email]],
+            username: ['', Validators.required],
             password: ['', [Validators.required, Validators.minLength(6)]]
         });
     }
 
-    // // convenience getter for easy access to form fields
+    // convenience getter for easy access to form fields
     get f() { return this.form.controls; }
 
     onSubmit(): void {
@@ -50,9 +51,10 @@ export class RegisterComponent implements OnInit {
         this.accountService.register(this.form.value)
             .pipe(first())
             .subscribe(
-                () => {
+                data => {
                     this.alertService.success('Registration successful', { keepAfterRouteChange: true });
                     this.router.navigate(['../login'], { relativeTo: this.route });
+                    console.log(data);
                 },
                 error => {
                     this.alertService.error(error);
