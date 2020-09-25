@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import * as signalR from '@aspnet/signalr';
-import { TrafficLight } from '../../shared/models/TrafficLight';
+import { TrafficLight } from '../models/TrafficLight';
 import { HttpClient } from '@angular/common/http';
 import { Observable, BehaviorSubject } from 'rxjs';
 

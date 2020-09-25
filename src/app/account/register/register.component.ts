@@ -1,17 +1,22 @@
-import { AbstractType, Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
 
-import { AlertService } from '../services/alert.service';
-import { AccountService } from '../api/services/account.service';
+import { AlertService } from '../../core/services/alert.service';
+import { AccountService } from '../services/account.service';
 
-@Component({ templateUrl: 'login.component.html' })
-export class LoginComponent implements OnInit {
+import { Observable } from 'rxjs';
+
+
+// @Component({ templateUrl:'register.component.html' })
+
+// @Component({ templateUrl: './register.component.html' })
+@Component({ templateUrl: './register.component.html' })
+export class RegisterComponent implements OnInit {
     form: FormGroup;
     loading = false;
     submitted = false;
-    returnUrl: string;
 
     constructor(
         private formBuilder: FormBuilder,
@@ -21,25 +26,19 @@ export class LoginComponent implements OnInit {
         private alertService: AlertService
     ) { }
 
-    ngOnInit() {
+    ngOnInit(): void {
         this.form = this.formBuilder.group({
+            firstName: ['', Validators.required],
+            lastName: ['', Validators.required],
             username: ['', Validators.required],
-            password: ['', Validators.required]
+            password: ['', [Validators.required, Validators.minLength(6)]]
         });
-
-        // get return url from route parameters or default to '/'
-        this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/about';
     }
 
     // convenience getter for easy access to form fields
     get f() { return this.form.controls; }
 
-    public logout(): void {
-        this.accountService.logout();
-    } 
-
-    
-    onSubmit() {
+    onSubmit(): void {
         this.submitted = true;
 
         // reset alerts on submit
@@ -51,17 +50,17 @@ export class LoginComponent implements OnInit {
         }
 
         this.loading = true;
-        this.accountService.login(this.f.username.value, this.f.password.value)
+        this.accountService.register(this.form.value)
             .pipe(first())
             .subscribe(
                 data => {
-                    this.router.navigate([this.returnUrl]);
-                    console.log(data.accessToken + '- access token\n' + data.refreshToken + '- refresh token');
+                    this.alertService.success('Registration successful', { keepAfterRouteChange: true });
+                    this.router.navigate(['../login'], { relativeTo: this.route });
+                    console.log(data);
                 },
                 error => {
                     this.alertService.error(error);
                     this.loading = false;
                 });
-        
     }
 }

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { TrafficLight } from '../../shared/models/TrafficLight';
+import { TrafficLight } from '../models/TrafficLight';
 import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'

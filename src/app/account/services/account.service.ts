@@ -3,11 +3,11 @@ import { Router } from '@angular/router';
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { RegisterRequest } from '../../shared/models/RegisterRequest';
+import { RegisterRequest } from '../models/RegisterRequest';
 
 import { environment } from '../../../environments/environment';
-import { User } from '../../shared/models/User';
-import { LoginResponce } from '../../shared/models/LoginResponce';
+import { User } from '../models/User';
+import { LoginResponce } from '../models/LoginResponce';
 
 @Injectable({ providedIn: 'root' })
 export class AccountService {

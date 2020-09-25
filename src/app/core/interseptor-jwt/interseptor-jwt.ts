@@ -1,7 +1,7 @@
 import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
 import { Component, Injectable, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import {AccountService} from '../../api/services/account.service';
+import {AccountService} from '../../account/services/account.service';
 
 @Injectable()
 export class InterseptorJwt implements HttpInterceptor {
@@ -15,7 +15,7 @@ export class InterseptorJwt implements HttpInterceptor {
       // if (isLoggedIn && isApiUrl) {
       request = request.clone({
               setHeaders: {
-                  Authorization: 'Bearer' +  `${this.accessToken}`
+                  Authorization: 'Bearer' + ' ' + `${this.accessToken}`
               }
           });
      // }

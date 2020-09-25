@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { TrafficLight } from '../shared/models/TrafficLight';
-import { Color } from '../shared/models/Color';
+import { TrafficLight } from '../models/TrafficLight';
+import { Color } from '../models/Color';
 
 
-import { TrafficApiService } from '../api/services/traffic-api.service';
-import { SignalRService } from '../api/services/signal-r.service';
+import { TrafficApiService } from '../services/traffic-api.service';
+import { SignalRService } from '../services/signal-r.service';
 import { ActivatedRoute } from '@angular/router';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatDividerModule} from '@angular/material/divider';
