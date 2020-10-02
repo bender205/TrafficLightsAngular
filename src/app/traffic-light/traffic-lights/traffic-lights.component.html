@@ -1,42 +1,3 @@
-<!--   
-
-<mat-grid-list cols="2"  >
-  <mat-grid-tile>    
-    <div class="trafficlight">
-      <div class="protector"></div>
-      <div class="protector"></div>
-      <div class="protector"></div>
-      <div [ngClass]="{redOpacity: redOpacity}" class="red"></div>
-      <div [ngClass]="{yellowOpacity: yellowOpacity}" class="yellow"></div>
-      <div [ngClass]="{greenOpacity: greenOpacity}" class="green"></div>
-    </div>         
-  </mat-grid-tile>
-
-   <button (click) = "setRed()">Red</button>
-
-  <button (click) = "setYellow()">Yellow</button>
-
-  <button (click) = "setGreen()">Green</button> 
-  
-
-  <ng-container *ngIf="trafficLight">  
-    <mat-grid-tile>
-      <mat-list>
-        <mat-list-item>Id: {{trafficLight.id}}</mat-list-item>
-        <mat-divider></mat-divider>
-        <mat-list-item>Color: {{trafficLight.color}}</mat-list-item>
-        <mat-divider></mat-divider>
-        <mat-list-item>{{trafficLight.date | date:'medium'}}</mat-list-item>
-      </mat-list>      
-    </mat-grid-tile>
-   
-           
-  </ng-container>
-</mat-grid-list>
-
-
-  
-   -->
 
    <div class="container">
 
@@ -50,9 +11,13 @@
   <ng-container *ngIf="trafficLight">   
     <div class="text-center">Id: {{trafficLight.id}}</div> 
     <div class="text-center">Color: {{trafficLight.color}}</div>  
-      <div class="text-center">{{trafficLight.date | date:'medium'}}</div>          
+      <div class="text-center">{{trafficLight.date | date:'medium'}}</div>              
   </ng-container>
-
+<div class="text-center">
+  <button type="submit" (click)="updateColor()">
+    Next color
+  </button>  
+</div>
   
 
 

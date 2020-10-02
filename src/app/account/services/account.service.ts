@@ -17,18 +17,14 @@ export class AccountService {
     constructor(
         private router: Router,
         private http: HttpClient
-    ) {
-        // this.userSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('user')));
-        // this.user = this.userSubject.asObservable();
+    )
+    {
     }
 
     public get getAccessToken(): string {
         return localStorage.getItem('accessToken');
     }
 
-
-
-// return this.http.get<TrafficLight>(`/api/TrafficLight/${id}`);
     login(username, password): Observable<LoginResponce> {
           return this.http.post<LoginResponce>(`/api/users/login`, { username, password })
             .pipe(map(tokens => {

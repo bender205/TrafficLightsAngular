@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
     }
 
     // convenience getter for easy access to form fields
-    get f() { return this.form.controls; }
+    get getFormControls() { return this.form.controls; }
 
     public logout(): void {
         this.accountService.logout();
@@ -50,7 +50,7 @@ export class LoginComponent implements OnInit {
         }
 
         this.loading = true;
-        this.accountService.login(this.f.username.value, this.f.password.value)
+        this.accountService.login(this.getFormControls.username.value, this.getFormControls.password.value)
             .pipe(first())
             .subscribe(
                 data => {

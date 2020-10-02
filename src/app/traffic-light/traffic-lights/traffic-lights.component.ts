@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TrafficLight } from '../models/TrafficLight';
+import { TrafficLightByIdRequest } from '../models/TrafficLightByIdRequest';
 import { Color } from '../models/Color';
 
 
@@ -49,7 +50,11 @@ export class TrafficLightsComponent implements OnInit {
       }
     });
   }
-
+  updateColor(): void{
+    console.log('switched color');
+    this.trafficLightService.nextColor(new TrafficLightByIdRequest(this.id));
+  }
+//#region color-switching func
   setRed(): void {
     this.deactivateAllColors();
     this.redOpacity = !this.redOpacity;
@@ -80,5 +85,6 @@ export class TrafficLightsComponent implements OnInit {
     this.yellowOpacity = false;
     this.greenOpacity = false;
   }
+  //#endregion
 }
 
