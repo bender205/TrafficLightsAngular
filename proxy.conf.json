@@ -1,6 +1,17 @@
-{
-    "/api/*": {
-        "target": "https://localhost:5001",
+{    "/api/trafficlight/*": {
+            "target": "https://localhost:44362",
+            "secure": false,
+            "logLevel": "debug",
+            "changeOrigin": true
+        },
+    "/lighthub/*": {
+        "target": "https://localhost:44362",
+        "secure": false,
+        "logLevel": "debug",
+        "changeOrigin": true
+    },
+    "/api/users/*": {
+        "target": "https://localhost:44388",
         "secure": false,
         "logLevel": "debug",
         "changeOrigin": true

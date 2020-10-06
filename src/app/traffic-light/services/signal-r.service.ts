@@ -3,6 +3,7 @@ import * as signalR from '@aspnet/signalr';
 import { TrafficLight } from '../models/TrafficLight';
 import { HttpClient } from '@angular/common/http';
 import { Observable, BehaviorSubject } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +19,7 @@ export class SignalRService {
 
   public startConnection = () => {
     this.hubConnection = new signalR.HubConnectionBuilder()
-      .withUrl('https://localhost:5001/lighthub')
+      .withUrl(environment.signalRUrl + '/lighthub')
       .build();
     this.hubConnection
       .start()

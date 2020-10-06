@@ -3,7 +3,10 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  lightApiUrl: 'https://localhost:44362',
+  authUrl: 'https://localhost:44388',
+  signalRUrl: 'https://localhost:44362'
 };
 
 /*

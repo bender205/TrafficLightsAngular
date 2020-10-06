@@ -27,7 +27,6 @@ import { ErrorInterceptor } from '../app/core/helpers/error.interceptor';
 
 const appRoutes: Routes = [
   { path: 'trafficlight/:id', component: TrafficLightsComponent },
-
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'about', component: AboutComponent },

@@ -11,7 +11,7 @@ export class InterseptorJwt implements HttpInterceptor {
       // add auth header with jwt if user is logged in and request is to api url
       this.accessToken = this.accountService.getAccessToken;
      // const isLoggedIn = user && user.token;
-      const isApiUrl = request.url.startsWith('/api/TrafficLight');
+      const isApiUrl = request.url.startsWith('*/api/trafficlight*');
       // if (isLoggedIn && isApiUrl) {
       request = request.clone({
               setHeaders: {
