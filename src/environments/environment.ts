@@ -4,9 +4,9 @@
 
 export const environment = {
   production: false,
-  lightApiUrl: 'https://localhost:44362',
-  authUrl: 'https://localhost:44388',
-  signalRUrl: 'https://localhost:44362'
+  lightApiUrl: 'https://localhost:2443',
+  authUrl: 'https://localhost:1443',
+  signalRUrl: 'https://localhost:2443'
 };
 
 /*
